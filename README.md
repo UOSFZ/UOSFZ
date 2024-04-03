@@ -1,1 +1,3 @@
-This is Fengze Li's personal webpage, the origin template is Jon Barron's public academic website: https://jonbarron.info/. 
+This is the source code to Fengze Li's personal webpage https://uosfz.github.io/UOSFZ/ .
+
+The origin template is Jon Barron's public academic website: https://jonbarron.info/. 
