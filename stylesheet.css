@@ -242,17 +242,6 @@ a:focus-visible {
   pointer-events: none;
 }
 
-/* Hero accent rule under content */
-.hero__rule {
-  margin-top: clamp(56px, 7vw, 96px);
-  height: 1px;
-  background: linear-gradient(90deg,
-    var(--baidu-blue) 0,
-    var(--baidu-blue) 80px,
-    var(--rule) 80px,
-    var(--rule) 100%);
-}
-
 /* =========================================================================
    2. ABOUT  (editorial prose, sticky kicker)
    ========================================================================= */
@@ -901,7 +890,7 @@ a:focus-visible {
    Print
    ========================================================================= */
 @media print {
-  .hero__rule, .reveal { all: revert; opacity: 1 !important; }
+  .reveal { all: revert; opacity: 1 !important; }
   body { color: #000; }
   a { color: #000; text-decoration: underline; }
 }
