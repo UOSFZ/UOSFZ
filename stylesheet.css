@@ -254,46 +254,53 @@ a:focus-visible {
 }
 
 /* =========================================================================
-   2. STATS strip
+   2. ABOUT  (editorial prose, sticky kicker)
    ========================================================================= */
-.stats {
-  padding-top: clamp(48px, 6vw, 72px);
-  padding-bottom: clamp(48px, 6vw, 72px);
-}
-
-.stats__grid {
-  display: grid;
-  grid-template-columns: repeat(4, minmax(0, 1fr));
-  gap: 0;
+.about {
+  padding-top: clamp(56px, 7vw, 96px);
+  padding-bottom: clamp(56px, 7vw, 96px);
   border-top: 1px solid var(--rule);
   border-bottom: 1px solid var(--rule);
 }
 
-.stat {
-  padding: 32px clamp(16px, 2.4vw, 28px);
-  border-right: 1px solid var(--rule);
+.about__grid {
   display: grid;
-  align-content: start;
-  gap: 8px;
+  grid-template-columns: minmax(0, 4fr) minmax(0, 8fr);
+  gap: clamp(32px, 5vw, 88px);
+  align-items: start;
 }
-.stat:last-child { border-right: none; }
 
-.stat__num {
-  font-family: var(--mono);
-  font-size: clamp(28px, 3.2vw, 40px);
+.about__side { position: sticky; top: 24px; }
+
+.about__kicker {
+  margin-top: 12px;
+  font-family: var(--serif, var(--sans));
   font-weight: 500;
+  font-size: clamp(28px, 3.2vw, 40px);
+  line-height: 1.08;
   letter-spacing: -0.02em;
   color: var(--ink);
-  line-height: 1;
 }
+.about__kicker .blue { color: var(--baidu-blue); }
 
-.stat__num .accent { color: var(--baidu-blue); }
-
-.stat__label {
-  font-size: 13px;
+.about__body {
+  font-size: clamp(16px, 1.15vw, 18px);
+  line-height: 1.7;
   color: var(--ink-soft);
-  letter-spacing: -0.005em;
-  line-height: 1.4;
+  max-width: 62ch;
+}
+.about__body p + p { margin-top: 1.05em; }
+.about__body a {
+  color: var(--ink);
+  text-decoration: none;
+  border-bottom: 1px solid var(--baidu-blue);
+  padding-bottom: 1px;
+  transition: color .15s ease, border-color .15s ease;
+}
+.about__body a:hover,
+.about__body a:focus-visible {
+  color: var(--baidu-blue);
+  border-bottom-color: var(--baidu-blue-ink);
 }
 
 /* =========================================================================
@@ -840,15 +847,11 @@ a:focus-visible {
   .hero__portrait {
     max-width: 360px;
   }
-  .stats__grid {
-    grid-template-columns: repeat(2, 1fr);
+  .about__grid {
+    grid-template-columns: 1fr;
+    gap: 28px;
   }
-  .stat {
-    border-bottom: 1px solid var(--rule);
-  }
-  .stat:nth-child(2) { border-right: none; }
-  .stat:nth-child(3),
-  .stat:nth-child(4) { border-bottom: none; }
+  .about__side { position: static; }
   .expertise__grid {
     grid-template-columns: 1fr;
     gap: 32px;
@@ -885,9 +888,6 @@ a:focus-visible {
 
 @media (max-width: 600px) {
   .hero__title { font-size: clamp(36px, 10vw, 56px); }
-  .stats__grid { grid-template-columns: 1fr; }
-  .stat { border-right: none; border-bottom: 1px solid var(--rule); }
-  .stat:last-child { border-bottom: none; }
   .pub {
     grid-template-columns: 60px 1fr;
     gap: 14px;
