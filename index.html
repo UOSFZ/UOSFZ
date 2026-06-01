@@ -6,7 +6,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
   <title>Fengze Li - Forward Deployed Engineer, Baidu ACG</title>
-  <meta name="description" content="Fengze Li. Forward Deployed Engineer at Baidu Intelligent Cloud (ACG). PhD, University of Liverpool. Building production LLM and Agent systems for enterprises across 10+ countries.">
+  <meta name="description" content="Fengze Li. Forward Deployed Engineer at Baidu AI Cloud Group (ACG). PhD, University of Liverpool. Building production LLM and Agent systems for enterprises across 10+ countries.">
   <meta name="author" content="Fengze Li">
   <meta name="theme-color" content="#FFFFFF">
 
@@ -63,9 +63,9 @@
         </div>
 
         <div class="hero__portrait reveal delay-2">
-          <img src="images/fz1.jpg"
+          <img id="heroPortraitImg"
+               src="images/fz1.jpg"
                alt="Portrait of Fengze Li"
-               width="800" height="1000"
                loading="eager" fetchpriority="high">
         </div>
 
@@ -488,7 +488,7 @@
             <div>
               <p class="tl__company">Baidu</p>
               <p class="tl__role">
-                Forward Deployed Engineer, Baidu Intelligent Cloud (ACG).
+                Forward Deployed Engineer, Baidu AI Cloud Group (ACG).
               </p>
               <p class="tl__note">
                 LLM and Agent systems for enterprise customers across Asia,
@@ -507,7 +507,7 @@
             <div>
               <p class="tl__company">JITRI</p>
               <p class="tl__role">
-                Research Scientist Intern, Jiangsu Industrial Technology Research Institute.
+                Research Scientist, Jiangsu Industrial Technology Research Institute.
               </p>
             </div>
           </div>
@@ -639,6 +639,50 @@
     </div>
   </footer>
 
+
+  <!-- Hero portrait random rotation: every 60s + click to swap -->
+  <script>
+    (function () {
+      var imgs = ['images/fz1.jpg', 'images/profile1.jpg', 'images/profile2.jpg'];
+      var el = document.getElementById('heroPortraitImg');
+      if (!el) return;
+
+      // Preload to avoid flicker on swap.
+      imgs.forEach(function (src) { var p = new Image(); p.src = src; });
+
+      function pickDifferent() {
+        var current = el.getAttribute('src');
+        var pool = imgs.filter(function (s) {
+          return !current || current.indexOf(s) === -1;
+        });
+        if (pool.length === 0) pool = imgs.slice();
+        return pool[Math.floor(Math.random() * pool.length)];
+      }
+
+      function swap() {
+        var next = pickDifferent();
+        el.classList.add('is-fading');
+        var done = function () {
+          el.removeEventListener('transitionend', done);
+          el.src = next;
+          // Force a reflow tick so the fade-back actually animates.
+          requestAnimationFrame(function () {
+            el.classList.remove('is-fading');
+          });
+        };
+        el.addEventListener('transitionend', done, { once: true });
+      }
+
+      // Random initial choice on load.
+      el.src = imgs[Math.floor(Math.random() * imgs.length)];
+
+      // Auto rotate every 60s.
+      setInterval(swap, 60000);
+
+      // Click to swap.
+      el.addEventListener('click', swap);
+    })();
+  </script>
 
   <!-- Reveal-on-scroll, IntersectionObserver, no scroll listeners -->
   <script>
